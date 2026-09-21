@@ -1,0 +1,27 @@
+{
+  "key.categories.littlepalette": "Little Palette",
+  "key.littlepalette.open_gui": "Open Palette",
+
+  "gui.littlepalette.title": "Little Palette",
+  "gui.littlepalette.palette_name": "Palette name",
+  "gui.littlepalette.prev": "<",
+  "gui.littlepalette.next": ">",
+  "gui.littlepalette.new": "New",
+  "gui.littlepalette.rename": "Rename",
+  "gui.littlepalette.delete": "Delete",
+  "gui.littlepalette.pick": "Pick",
+  "gui.littlepalette.sample": "Held",
+  "gui.littlepalette.tolerance": "Tolerance: %s",
+  "gui.littlepalette.category_all": "All blocks",
+  "gui.littlepalette.category_item": "%s",
+  "gui.littlepalette.full_any": "Full: Any",
+  "gui.littlepalette.full_only": "Full: Only",
+  "gui.littlepalette.full_excluded": "Full: No",
+  "gui.littlepalette.results": "%s blocks",
+  "gui.littlepalette.results_gradient": "%s blocks (gradient)",
+  "gui.littlepalette.color_picker": "Pick a color",
+  "gui.littlepalette.color_preview": "Color: %s",
+  "gui.littlepalette.confirm": "OK",
+  "gui.littlepalette.cancel": "Cancel",
+  "gui.littlepalette.index_loading": "Loading block colors..."
+}

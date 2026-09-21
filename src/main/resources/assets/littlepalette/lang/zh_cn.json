@@ -1,0 +1,27 @@
+{
+  "key.categories.littlepalette": "Little Palette 调色板",
+  "key.littlepalette.open_gui": "打开调色板",
+
+  "gui.littlepalette.title": "Little Palette 调色板",
+  "gui.littlepalette.palette_name": "调色板名称",
+  "gui.littlepalette.prev": "<",
+  "gui.littlepalette.next": ">",
+  "gui.littlepalette.new": "新建",
+  "gui.littlepalette.rename": "改名",
+  "gui.littlepalette.delete": "删除",
+  "gui.littlepalette.pick": "取色",
+  "gui.littlepalette.sample": "采样",
+  "gui.littlepalette.tolerance": "容差: %s",
+  "gui.littlepalette.category_all": "全部方块",
+  "gui.littlepalette.category_item": "%s",
+  "gui.littlepalette.full_any": "完整: 全部",
+  "gui.littlepalette.full_only": "完整: 仅完整方块",
+  "gui.littlepalette.full_excluded": "完整: 排除完整方块",
+  "gui.littlepalette.results": "%s 个方块",
+  "gui.littlepalette.results_gradient": "%s 个方块（渐变）",
+  "gui.littlepalette.color_picker": "选取颜色",
+  "gui.littlepalette.color_preview": "颜色: %s",
+  "gui.littlepalette.confirm": "确定",
+  "gui.littlepalette.cancel": "取消",
+  "gui.littlepalette.index_loading": "正在加载方块颜色…"
+}

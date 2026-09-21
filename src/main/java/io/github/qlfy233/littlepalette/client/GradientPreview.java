@@ -6,8 +6,8 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
 
 /**
- * 渐变预览条：两色模式下显示调色板前两色之间的渐变，
- * 让用户直观看到"搜索的是什么渐变带"。
+ * 渐变预览条：显示调色板全部颜色沿折线的渐变（1 段/色 = 线性插值），
+ * 与搜索几何（Lab 折线）直觉一致。
  */
 class GradientPreview extends AbstractWidget {
 
@@ -15,6 +15,7 @@ class GradientPreview extends AbstractWidget {
 
     @FunctionalInterface
     interface IntArraySupplier {
+        /** 返回全部颜色 RGB；少于 2 个返回 null。 */
         int[] get();
     }
 
@@ -25,15 +26,18 @@ class GradientPreview extends AbstractWidget {
 
     @Override
     protected void renderWidget(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
-        int[] pair = this.colors.get();
-        if (pair == null || pair.length < 2) {
+        int[] cs = this.colors.get();
+        if (cs == null || cs.length < 2) {
             return;
         }
-        int c1 = pair[0], c2 = pair[1];
+        // 折线渐变：把条宽均分为 n-1 段，段内线性插值
+        int segs = cs.length - 1;
         for (int dx = 0; dx < this.width; dx++) {
-            float t = this.width <= 1 ? 0 : dx / (float) (this.width - 1);
+            float t = this.width <= 1 ? 0 : dx / (float) (this.width - 1) * segs;
+            int seg = Math.min((int) t, segs - 1);
+            float local = t - seg;
             g.fill(this.getX() + dx, this.getY(), this.getX() + dx + 1, this.getY() + this.height,
-                    lerpColor(c1, c2, t));
+                    lerpColor(cs[seg], cs[seg + 1], local));
         }
         g.renderOutline(this.getX(), this.getY(), this.width, this.height, 0xFF808080);
     }

@@ -23,6 +23,14 @@ public final class KeyBindings {
             GLFW.GLFW_KEY_O,
             "key.categories.littlepalette");
 
+    /** P：切换右上角 pin 显示（游戏内）。 */
+    public static final KeyMapping PIN_HUD = new KeyMapping(
+            "key.littlepalette.pin_hud",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_P,
+            "key.categories.littlepalette");
+
     private KeyBindings() {
     }
 
@@ -30,6 +38,7 @@ public final class KeyBindings {
     @SubscribeEvent
     public static void onRegisterKeys(RegisterKeyMappingsEvent event) {
         event.register(OPEN_GUI);
+        event.register(PIN_HUD);
     }
 
     /** game bus：每 tick 检查。consumeClick 必须放 while 里（官方文档要求）。 */
@@ -37,6 +46,9 @@ public final class KeyBindings {
     public static void onClientTick(ClientTickEvent.Post event) {
         while (OPEN_GUI.consumeClick()) {
             Minecraft.getInstance().setScreen(new PaletteScreen());
+        }
+        while (PIN_HUD.consumeClick()) {
+            PinnedHud.toggle();
         }
     }
 }

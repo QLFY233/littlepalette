@@ -33,20 +33,17 @@ class ColorSlotButton extends AbstractWidget {
     protected void renderWidget(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
         int color = this.colorSupplier.getAsInt();
         if (color < 0) {
-            g.fill(this.getX() + 1, this.getY() + 1,
-                    this.getX() + this.width - 1, this.getY() + this.height - 1, 0xFF202020);
-            g.renderOutline(this.getX(), this.getY(), this.width, this.height, 0xFF404040);
-        } else {
-            g.fill(this.getX() + 1, this.getY() + 1,
-                    this.getX() + this.width - 1, this.getY() + this.height - 1, 0xFF000000 | color);
-            g.renderOutline(this.getX(), this.getY(), this.width, this.height,
-                    this.isHoveredOrFocused() ? 0xFFFFFFFF : 0xFF808080);
-            // 有来源方块：叠画物品图标（16x16 居中，覆盖纯色块大半）
-            Block b = this.blockSupplier.apply(0);
-            if (b != null) {
-                g.renderItem(b.asItem().getDefaultInstance(), this.getX(), this.getY());
-            }
+            return;   // 空槽：不画任何东西
         }
+        // 有来源方块：只画方块图标本体，不加任何框
+        Block b = this.blockSupplier.apply(0);
+        if (b != null) {
+            g.renderItem(b.asItem().getDefaultInstance(), this.getX(), this.getY());
+            return;
+        }
+        // 纯颜色条目（取色得来，无方块）：只画色块，不画边框
+        g.fill(this.getX(), this.getY(),
+                this.getX() + this.width, this.getY() + this.height, 0xFF000000 | color);
     }
 
     /** 悬停时给 Screen 用的展示物品（tooltip 来源），无来源方块返回 EMPTY。 */

@@ -31,8 +31,6 @@ import java.util.List;
  */
 public class PaletteScreen extends Screen {
 
-    private static final int PANEL_BG = 0xC0101010;
-    private static final int PANEL_LINE = 0xFF606060;
     private static final int SLOT_SIZE = 18;
     private static final int LABEL_COLOR = 0xFFE0E0E0;
     private static final int RESULT_CELL = 18;
@@ -382,10 +380,6 @@ public class PaletteScreen extends Screen {
         this.renderBackground(g, mouseX, mouseY, partialTick);
 
         int cx = this.width / 2;
-        int panelX1 = cx - 212, panelY1 = 22;
-        int panelX2 = cx + 212, panelY2 = this.height - 34;
-        g.fill(panelX1, panelY1, panelX2, panelY2, PANEL_BG);
-        g.renderOutline(panelX1, panelY1, panelX2 - panelX1, panelY2 - panelY1, PANEL_LINE);
 
         g.drawCenteredString(this.font, this.title, cx, 10, LABEL_COLOR);
 
